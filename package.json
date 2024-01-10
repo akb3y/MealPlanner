@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server .",
     "start:server": "nodemon server/server.js",
+    "scrapy": "nodemon server/scrapy.js",
     "build": "webpack .",
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
