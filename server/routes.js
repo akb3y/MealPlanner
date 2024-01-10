@@ -19,6 +19,22 @@ router.get("/getAll", (req, res) => {
   });
 });
 
+router.get("/getOne/:recipe_id", (req, res) => {
+  const { recipe_id } = req.params;
+
+  const query = "SELECT * FROM recipes WHERE recipe_id = $1";
+  const values = [recipe_id];
+
+  pool.query(query, values, (err, result) => {
+    if (err) {
+      console.error("Error executing query", err);
+      res.send(500).json({ error: "Internal Server Error" });
+    } else {
+      res.json(result.rows);
+    }
+  });
+});
+
 router.post("/addRecipe", (req, res) => {
   const { name, description, ingredients, instructions, photos } = req.body;
 
