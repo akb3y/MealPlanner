@@ -22,7 +22,6 @@ router.get("/getAll", (req, res) => {
 router.post("/addRecipe", (req, res) => {
   const { name, description, ingredients, instructions, photos } = req.body;
 
-  // Assuming ingredients and instructions are arrays, and photos is an array
   const values = [name, description, ingredients, instructions, photos];
 
   const query =
@@ -33,7 +32,24 @@ router.post("/addRecipe", (req, res) => {
       console.error("Error executing query", err);
       res.status(500).json({ error: "Internal Server Error" });
     } else {
-      res.json(result.rows[0]); // Assuming you want to send back the newly added recipe
+      // res.json(result.rows[0]);
+      res.status(200).send("Successfully added");
+    }
+  });
+});
+
+router.delete("/removeRecipe/:recipe_id", (req, res) => {
+  const { recipe_id } = req.params;
+
+  const query = "DELETE FROM recipes WHERE recipe_id = $1";
+  const values = [recipe_id];
+
+  pool.query(query, values, (err, result) => {
+    if (err) {
+      console.error("Error executing query", err);
+      res.status(500).json({ error: "Internal Server Error" });
+    } else {
+      res.status(200).send("Successfully removed recipe");
     }
   });
 });
