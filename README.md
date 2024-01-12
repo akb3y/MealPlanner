@@ -1,1 +1,1 @@
-# create-react-app-template
+Simply Meal Planner
