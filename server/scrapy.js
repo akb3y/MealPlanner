@@ -7,7 +7,7 @@ const pool = require("./database");
 
 const app = express();
 
-const url = "https://www.seriouseats.com/all-recipes-5117779";
+const url = "https://www.seriouseats.com/all-recipes-5117749";
 let recipeUrls = [];
 axios
   .get(url)
@@ -15,14 +15,11 @@ axios
     const html = response.data;
     const $ = cheerio.load(html);
 
-    // Replace '.recipe-link' with the appropriate selector for recipe links
     $(".comp").each((index, element) => {
       if (element && element.attribs && element.attribs.href) {
         recipeUrls.push(element.attribs.href);
       }
     });
-
-    // console.log("finished compiling [ ", recipeUrls.length, " ] urls...");
 
     scrapeUrls(recipeUrls);
   })
