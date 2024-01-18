@@ -1,7 +1,13 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
-import App from "./src/App.js";
-
-const container = document.getElementById("root");
-const root = createRoot(container);
-root.render(<App />);
+import ReactDOM from "react-dom/client";
+import "./public/style.css";
+import App from "./src/App";
+import { ProSidebarProvider } from "react-pro-sidebar";
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <ProSidebarProvider>
+      <App />
+    </ProSidebarProvider>
+  </React.StrictMode>
+);

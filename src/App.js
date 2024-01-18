@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "../public/style.css";
+import SideBar from "./components/SideBar";
 
 const App = () => {
-  return <h1>Hello world! I am using React</h1>;
+  const [page, setPage] = useState("Home");
+  return <SideBar />;
 };
 
 export default App;
