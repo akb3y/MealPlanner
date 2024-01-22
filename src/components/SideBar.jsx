@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Sidebar, Menu, MenuItem, useProSidebar } from "react-pro-sidebar";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
@@ -30,9 +31,15 @@ function SideBar({ setPage }) {
           <MenuItem icon={<RestaurantIcon />} onClick={() => setPage("Recipe")}>
             Recipes
           </MenuItem>
-          <MenuItem icon={<ContactsOutlinedIcon />} onClick={() => setPage("Contact")}>Contact Us</MenuItem>
-          <MenuItem icon={<HelpOutlineOutlinedIcon />} onClick={() => setPage("FAQ")}>FAQ</MenuItem>
-          <MenuItem icon={<SettingsIcon />} onClick={() => setPage("Settings")}>Settings</MenuItem>
+          <MenuItem icon={<ContactsOutlinedIcon />} onClick={() => setPage("Contact")}>
+            Contact Us
+          </MenuItem>
+          <MenuItem icon={<HelpOutlineOutlinedIcon />} onClick={() => setPage("FAQ")}>
+            FAQ
+          </MenuItem>
+          <MenuItem icon={<SettingsIcon />} onClick={() => setPage("Settings")}>
+            Settings
+          </MenuItem>
         </Menu>
       </Sidebar>
     </div>
