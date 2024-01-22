@@ -7,7 +7,7 @@ import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 
-function SideBar() {
+function SideBar({ setPage }) {
   const { collapseSidebar } = useProSidebar();
 
   return (
@@ -24,11 +24,15 @@ function SideBar() {
             <h4>Simply Meal Planner</h4>
           </MenuItem>
 
-          <MenuItem icon={<HomeOutlinedIcon />}>Home</MenuItem>
-          <MenuItem icon={<RestaurantIcon />}>Recipes</MenuItem>
-          <MenuItem icon={<ContactsOutlinedIcon />}>Contact Us</MenuItem>
-          <MenuItem icon={<HelpOutlineOutlinedIcon />}>FAQ</MenuItem>
-          <MenuItem icon={<SettingsIcon />}>Settings</MenuItem>
+          <MenuItem icon={<HomeOutlinedIcon />} onClick={() => setPage("Home")}>
+            Home
+          </MenuItem>
+          <MenuItem icon={<RestaurantIcon />} onClick={() => setPage("Recipe")}>
+            Recipes
+          </MenuItem>
+          <MenuItem icon={<ContactsOutlinedIcon />} onClick={() => setPage("Contact")}>Contact Us</MenuItem>
+          <MenuItem icon={<HelpOutlineOutlinedIcon />} onClick={() => setPage("FAQ")}>FAQ</MenuItem>
+          <MenuItem icon={<SettingsIcon />} onClick={() => setPage("Settings")}>Settings</MenuItem>
         </Menu>
       </Sidebar>
     </div>
