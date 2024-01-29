@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../public/style.css";
 import SideBar from "./components/SideBar";
+import Recipes from "./components/Recipes";
 
 const App = () => {
   const [page, setPage] = useState("Home");
@@ -22,7 +23,16 @@ const App = () => {
     // Call the fetchData function
     fetchData();
   }, []);
-  return <SideBar setPage={setPage} />;
+  return (
+    <div className="app">
+      <div className="sidebar">
+        <SideBar setPage={setPage} />
+      </div>
+      <div className="main">
+        <Recipes data={data} />
+      </div>
+    </div>
+  );
 };
 
 export default App;
