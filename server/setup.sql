@@ -1,16 +1,16 @@
 -- Create Database
-CREATE DATABASE menu;
+CREATE DATABASE recipes;
 
 -- Connect to the Database
-\c menu;
+\c recipes;
 
 -- Create Table
-CREATE TABLE recipes (
+CREATE TABLE recipe (
     recipe_id SERIAL PRIMARY KEY,
     name TEXT UNIQUE NOT NULL,
     description TEXT,
     photos TEXT,
     ingredients TEXT[],
     instructions TEXT[],
-    url TEXT,
+    url TEXT
 );

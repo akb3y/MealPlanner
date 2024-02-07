@@ -70,7 +70,7 @@ const scrapeUrls = (recipeUrls) => {
 
           // Insert data into PostgreSQL database
           const query =
-            "INSERT INTO recipes (name, description, url, photos, ingredients, instructions) VALUES ($1, $2, $3, $4, $5, $6)";
+            "INSERT INTO recipe (name, description, url, photos, ingredients, instructions) VALUES ($1, $2, $3, $4, $5, $6)";
           const values = [name, description, recipeUrl, photos, ingredients, instructions];
 
           pool.query(query, values, (err, result) => {

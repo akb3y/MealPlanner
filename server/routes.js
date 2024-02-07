@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/getAll", (req, res) => {
-  const query = "SELECT * FROM recipes";
+  const query = "SELECT * FROM recipe";
   pool.query(query, (err, result) => {
     if (err) {
       console.error("Error executing query", err);
@@ -23,7 +23,7 @@ router.get("/getAll", (req, res) => {
 router.get("/getOne/:recipe_id", (req, res) => {
   const { recipe_id } = req.params;
 
-  const query = "SELECT * FROM recipes WHERE recipe_id = $1";
+  const query = "SELECT * FROM recipe WHERE recipe_id = $1";
   const values = [recipe_id];
 
   pool.query(query, values, (err, result) => {
@@ -42,7 +42,7 @@ router.post("/addRecipe", (req, res) => {
   const values = [name, description, ingredients, instructions, photos];
 
   const query =
-    "INSERT INTO recipes (name, description, ingredients, instructions, photos) VALUES ($1, $2, $3, $4, $5) RETURNING *";
+    "INSERT INTO recipe (name, description, ingredients, instructions, photos) VALUES ($1, $2, $3, $4, $5) RETURNING *";
 
   pool.query(query, values, (err, result) => {
     if (err) {
@@ -57,7 +57,7 @@ router.post("/addRecipe", (req, res) => {
 router.delete("/removeRecipe/:recipe_id", (req, res) => {
   const { recipe_id } = req.params;
 
-  const query = "DELETE FROM recipes WHERE recipe_id = $1";
+  const query = "DELETE FROM recipe WHERE recipe_id = $1";
   const values = [recipe_id];
 
   pool.query(query, values, (err, result) => {
@@ -81,7 +81,7 @@ router.put("/updateRecipe/:recipe_id", (req, res) => {
 
   // Update data in PostgreSQL database
   const query = `
-    UPDATE recipes
+    UPDATE recipe
     SET name = $1, description = $2, photos = $3, ingredients = $4, instructions = $5
     WHERE recipe_id = $6
   `;
